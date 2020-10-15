@@ -2,16 +2,17 @@
 var rover = "N"
 // ======================
 function turnLeft(rover) {
-  console.log('turnLeft was called!');
   if (rover === "N") {
       rover = "W"
   } else if (rover === "W") {
       rover = "S"
-  }else if (rover === "W") {
+  }else if (rover === "S") {
       rover ='E'
   }else if (rover === "E") {
       rover = "N"
-  }
+  };
+  console.log('turnLeft was called!');
+  console.log(rover);
 }
 
 
