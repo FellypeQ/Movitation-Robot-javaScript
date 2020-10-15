@@ -1,14 +1,17 @@
 // Rover object goes here:
 var rover = "N"
+var roverX = 0
+var roverY = 0
+
 // ======================
 function turnLeft(rover) {
-  if (rover === "N") {
+    if (rover === "N") {
       rover = "W"
-  } else if (rover === "W") {
+     } else if (rover === "W") {
       rover = "S"
-  }else if (rover === "S") {
+     }else if (rover === "S") {
       rover ='E'
-  }else if (rover === "E") {
+    }else{
       rover = "N"
   };
   console.log('turnLeft was called!');
@@ -17,6 +20,15 @@ function turnLeft(rover) {
 
 
 function turnRight(rover) {
+    if (rover === "N") {
+        rover = "E"
+        } else if (rover === "E") {
+        rover = "S"
+        }else if (rover === "S") {
+        rover ='W'
+    }else{
+        rover = "N"
+    };
   console.log('turnRight was called!');
 }
 
