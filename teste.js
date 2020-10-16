@@ -1,167 +1,175 @@
 // Rover object goes here:
-var roverDirection = "N";
-var coordinates = "North"
-var roverX = 0;
-var roverY = 0;
-
-
-
+var rover = {
+    direction: "N",
+    directionExtended: "North",
+    coordinateX: 0,
+    coordinateY: 0,
+    travelLog: []
+};
 // ======================
 function turnLeft() {
-    switch (roverDirection) {
+    switch (rover.direction) {
         case "N":
-            roverDirection = "W";
-            coordinates = "West";
+            rover.direction = "W";
+            rover.directionExtended = "West";
              break;
         case "W":
-            roverDirection = "S";
-            coordinates = "South";
+            rover.direction = "S";
+            rover.directionExtended = "South";
             break;
         case "S":
-            roverDirection = "E";
-            coordinates = "East";
+            rover.direction = "E";
+            rover.directionExtended = "East";
             break;
         case "E":
-            roverDirection = "N";
-            coordinates = "North";
+            rover.direction = "N";
+            rover.directionExtended = "North";
             break;
         default:
-            roverDirection = "N";
-            coordinates = "North";
+            rover.direction = "N";
+            rover.directionExtended = "North";
             console.log ("Turn automatically to North");
             break;
     }
 }
-
 function turnRight() {
-    switch (roverDirection) {
+    switch (rover.direction) {
         case "N":
-            roverDirection = "E";
-            coordinates = "East";
+            rover.direction = "E";
+            rover.directionExtended = "East";
             break;
         case "E":
-            roverDirection = "S";
-            coordinates = "South";
+            rover.direction = "S";
+            rover.directionExtended = "South";
             break;
         case "S":
-            roverDirection = "W";
-            coordinates = "West";
+            rover.direction = "W";
+            rover.directionExtended = "West";
             break;
         case "W":
-            roverDirection = "N";
-            coordinates = "North";
+            rover.direction = "N";
+            rover.directionExtended = "North";
             break;
         default:
-            roverDirection = "N";
-            coordinates = "North";
+            rover.direction = "N";
+            rover.directionExtended = "North";
             console.log ("Turn automatically to North");
             break;
     }
 }
-
 function moveForward() { 
-    switch (roverDirection) {
+    switch (rover.direction) {
         case "N":
-            if (roverY <= 0) {
-                console.log("The rover is in the limit of the planet");
+            //IF => Bonus 1
+            if (rover.coordinateY <= 0) {
+                console.log(`The rover is in the limit of the planet, the ${i}º move didn't realiazed`);
             } else {
-                roverY -=1;
-                console.log(`Rove was moved to forward, to position [${roverX},${roverY}]`);
+                rover.coordinateY -=1;
+                rover.travelLog.push(`Rove was moved to forward, to position [${rover.coordinateX},${rover.coordinateY}]`);
             }
             break;
         case "E":
-            if (roverX >=9) {
-                console.log("The rover is in the limit of the planet");
+            //IF => Bonus 1
+            if (rover.coordinateX >= 9) {
+                console.log(`The rover is in the limit of the planet, the ${i}º move didn't realiazed`);
             } else {
-                roverX +=1;
-                console.log(`Rove was moved to forward, to position [${roverX},${roverY}]`);
+                rover.coordinateX += 1;
+                rover.travelLog.push(`Rove was moved to forward, to position [${rover.coordinateX},${rover.coordinateY}]`);
             }    
             break;
         case "S":
-            if (roverY >= 9) {
-                console.log("The rover is in the limit of the planet");                
+            //IF => Bonus 1
+            if (rover.coordinateY >= 9) {
+                console.log(`The rover is in the limit of the planet, the ${i}º move didn't realiazed`);
             } else {
-                roverY +=1;
-                console.log(`Rove was moved to forward, to position [${roverX},${roverY}]`);
+                rover.coordinateY += 1;
+                rover.travelLog.push(`Rove was moved to forward, to position [${rover.coordinateX},${rover.coordinateY}]`);
             }
             break;
         case "W":
-            if (roverX <= 0) {
-                console.log("The rover is in the limit of the planet");
+            //IF => Bonus 1
+            if (rover.coordinateX <= 0) {
+                console.log(`The rover is in the limit of the planet, the ${i}º move didn't realiazed`);
             } else {
-                roverX -=1;
-                console.log(`Rove was moved to forward, to position [${roverX},${roverY}]`);
+                rover.coordinateX -= 1;
+                rover.travelLog.push(`Rove was moved to forward, to position [${rover.coordinateX},${rover.coordinateY}]`);
             }
             break;
         default:
-            console.log(`The Rover is in the position [${roverX},${roverY}]`);
+            console.log(`The Rover is in the position [${rover.coordinateX},${rover.coordinateY}]`);
             break;
     }
 }
-
-function moveBack() {
+//Bonus 2
+function moveBackward() {
     switch (roverDirection) {
         case "N":
-            if (roverY <= 9) {
-                console.log("The rover is in the limit of the planet");
+            //IF => Bonus 1
+            if (rover.coordinateY <= 9) {
+                console.log(`The rover is in the limit of the planet, the ${i}º move didn't realiazed`);
             } else {
-                roverY +=1;
-                console.log(`Rove was moved to back, to position [${roverX},${roverY}]`);
+                rover.coordinateY += 1;
+                rover.travelLog.push(`Rove was moved to back, to position [${rover.coordinateX},${rover.coordinateY}]`);
             }
             break;
         case "E":
-            if (roverX >=0) {
-                console.log("The rover is in the limit of the planet");
+            //IF => Bonus 1
+            if (rover.coordinateX >= 0) {
+                console.log(`The rover is in the limit of the planet, the ${i}º move didn't realiazed`);
             } else {
-                roverX -=1;
-                console.log(`Rove was moved to back, to position [${roverX},${roverY}]`);
+                rover.coordinateX -= 1;
+                rover.travelLog.push(`Rove was moved to back, to position [${rover.coordinateX},${rover.coordinateY}]`);
             }    
             break;
         case "S":
-            if (roverY >= 0) {
-                console.log("The rover is in the limit of the planet");                
+            //IF => Bonus 1
+            if (rover.coordinateY >= 0) {
+                console.log(`The rover is in the limit of the planet, the ${i}º move didn't realiazed`);
             } else {
-                roverY -=1;
-                console.log(`Rove was moved to back, to position [${roverX},${roverY}]`);
+                rover.coordinateY -= 1;
+                rover.travelLog.push(`Rove was moved to back, to position [${rover.coordinateX},${rover.coordinateY}]`);
             }
             break;
         case "W":
-            if (roverX <= 9) {
-                console.log("The rover is in the limit of the planet");
+            //IF => Bonus 1
+            if (rover.coordinateX <= 9) {
+                console.log(`The rover is in the limit of the planet, the ${i}º move didn't realiazed`);
             } else {
-                roverX +=1;
-                console.log(`Rove was moved to back, to position [${roverX},${roverY}]`);
+                rover.coordinateX += 1;
+                rover.travelLog.push(`Rove was moved to back, to position [${rover.coordinateX},${rover.coordinateY}]`);
             }
             break;
         default:
-            console.log(`The Rover is in the position [${roverX},${roverY}]`);
+            console.log(`The Rover is in the position [${rover.coordinateX},${rover.coordinateY}]`);
             break;
     }    
 }
-
 function moves(insertmoves) {
-    console.log(`The rover is in position [${roverX},${roverY}]`);
+    rover.travelLog.push(`The rover initials position is [${rover.coordinateX},${rover.coordinateY}]`);
     for (let i = 0; i < insertmoves.length; i++) {
         switch (insertmoves[i]) {
             case "l":
                 turnLeft();
-                console.log(`Rove turn to Left, if you go to forward you'll go to ${coordinates}`);
+                rover.travelLog.push(`Rove turns to Left,(${rover.directionExtended}), continues in [${rover.coordinateX},${rover.coordinateY}]`);
                 break;
             case "r":
                 turnRight();
-                console.log(`Rove turn to Right, if you go to forward you'll go to ${coordinates}`);
+                rover.travelLog.push(`Rove turns to Right,(${rover.directionExtended}), continues in [${rover.coordinateX},${rover.coordinateY}]`);
                 break;
             case "f":
                 moveForward();
                 break;
             case "b":
-                moveBack();
+                moveBackward();
                 break;
             default:
-                console.log("This move is not supported, try f, l, r, or b");
+                //Bonus 3
+                console.log(`The ${i+1}º move is not supported, please insert f, l, r, or b`);
                 break;
         }
     }
 }
-
+// ======================
 moves("rffrfflfrff")
+// ======================
+console.log(rover.travelLog)
