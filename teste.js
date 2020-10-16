@@ -1,37 +1,95 @@
 // Rover object goes here:
-var rover = "N"
-var roverX = 0
-var roverY = 0
+var rover = "N";
+var roverX = 0;
+var roverY = 0;
 
 // ======================
 function turnLeft(rover) {
-    if (rover === "N") {
-      rover = "W"
-     } else if (rover === "W") {
-      rover = "S"
-     }else if (rover === "S") {
-      rover ='E'
-    }else{
-      rover = "N"
-  };
-  console.log('turnLeft was called!');
-  console.log(rover);
+    switch (rover) {
+        case "N":
+            rover = "W"
+            console.log("Turn to West")
+            break;
+        case "W":
+            rover = "S"
+            console.log("Turn to South")
+            break;
+        case "S":
+            rover = "E"
+            console.log("Turn to East")
+            break;
+        case "E":
+            rover = "N"
+            console.log("Turn to North")
+            break;
+        default:
+            rover = "N"
+            console.log ("Turn automatically to North")
+            break;
+    }
 }
 
-
 function turnRight(rover) {
-    if (rover === "N") {
-        rover = "E"
-        } else if (rover === "E") {
-        rover = "S"
-        }else if (rover === "S") {
-        rover ='W'
-    }else{
-        rover = "N"
-    };
-  console.log('turnRight was called!');
+    switch (rover) {
+        case "N":
+            rover = "E"
+            console.log("Turn to East")
+            break;
+        case "E":
+            rover = "S"
+            console.log("Turn to South")
+            break;
+        case "S":
+            rover = "W"
+            console.log("Turn to West")
+            break;
+        case "W":
+            rover = "N"
+            console.log("Turn to North")
+            break;
+        default:
+            rover = "N"
+            console.log ("Turn automatically to North")
+            break;
+    }
 }
 
 function moveForward(rover) {
-  console.log('moveForward was called');
+    switch (rover) {
+        case "N":
+            if (roverY <= 0) {
+                console.log("The rover is in the limit of the planet")
+            } else {
+                roverY -=1
+            }
+            console.log(`The Rover is in the position [${roverX},${roverY}]`)  
+            break;
+        case "E":
+            if (roverX >=9) {
+                console.log("The rover is in the limit of the planet")
+            } else {
+                roverX +=1
+            }    
+            console.log(`The rover is in the position [${roverX},${roverY}]`)
+            break;
+        case "S":
+            if (roverY >= 9) {
+                console.log("The rover is in the limit of the planet")                
+            } else {
+                roverY +=1
+            }
+            console.log(`The rover is in the position [${roverX},${roverY}]`)
+            break;
+        case "W":
+            if (roverX <= 0) {
+                console.log("The rover is in the limit of the planet")
+            } else {
+                roverX -=1
+            }
+            console.log(`The rover is in the position [${roverX},${roverY}]`)
+            break;
+        default:
+            console.log(`The Rover is in the position [${roverX},${roverY}]`)
+            break;
+    }
 }
